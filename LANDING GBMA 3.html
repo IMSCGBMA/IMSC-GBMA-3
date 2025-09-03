@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GestionBoost Marketing ADS - Transforma Tu Centro de Estética</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e7893c;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .hero {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%232c3e50" width="100" height="100"/><path fill="%2334495e" d="M0 0L100 100"/></svg>') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #42c97e;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .needs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .need-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .need-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .need-card i {
+            font-size: 40px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .need-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .vigor-meter {
+            height: 10px;
+            background-color: #eee;
+            border-radius: 5px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+        
+        .vigor-fill {
+            height: 100%;
+            border-radius: 5px;
+        }
+        
+        .vigor-2 {
+            width: 40%;
+            background-color: var(--accent);
+        }
+        
+        .vigor-4 {
+            width: 80%;
+            background-color: var(--success);
+        }
+        
+        .testimonials {
+            background-color: var(--light);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .testimonial-text:before {
+            content: """;
+            font-size: 60px;
+            color: var(--accent);
+            position: absolute;
+            top: -20px;
+            left: -15px;
+            opacity: 0.2;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 15px;
+            overflow: hidden;
+        }
+        
+        .stats {
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .stat-card {
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+        
+        .process {
+            background-color: white;
+        }
+        
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            position: relative;
+            margin-left: 30px;
+        }
+        
+        .process-steps:before {
+            content: "";
+            position: absolute;
+            left: -30px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: var(--accent);
+        }
+        
+        .process-step {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .process-step:before {
+            content: "";
+            position: absolute;
+            left: -36px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var(--accent);
+        }
+        
+        .process-step h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .faq {
+            background-color: var(--light);
+        }
+        
+        .accordion {
+            margin-bottom: 20px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .accordion-header {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .accordion-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+        }
+        
+        .accordion-content.active {
+            padding: 20px;
+            max-height: 300px;
+        }
+        
+        .cta {
+            text-align: center;
+            background: linear-gradient(135deg, var(--secondary) 0%, #f3aa21 100%);
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .footer-bottom {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .process-steps {
+                margin-left: 0;
+            }
+            
+            .process-steps:before {
+                display: none;
+            }
+            
+            .process-step:before {
+                display: none;
+            }
+            
+            .process-step {
+                padding-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Gestion<span>Boost</span>Marketing ADS III </div>
+            <nav>
+                <ul>
+                    <li><a href="#necesidades">Necesidades</a></li>
+                    <li><a href="#resultados">Resultados</a></li>
+                    <li><a href="#proceso">Proceso</a></li>
+                    <li><a href="#testimonios">Testimonios</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contacto" class="btn">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Transforma Tu Centro de Estética con Clientes Garantizados</h1>
+            <p>¿Cansado de gestionar todo solo y invertir en publicidad sin ver flujo de clientes reales? Nuestra unidad de negocio especializada en marketing y ventas bajo el programa GBMA 3 garantiza en 180 dias de clientes constantes con Retornos de inversión comprobable de 2.1 hasta 7.3:1 +</p>
+            <a href="#contacto" class="btn">Solicitar Propuesta Personalizada</a>
+        </div>
+    </section>
+
+    <section id="necesidades">
+        <div class="container">
+            <div class="section-title">
+                <h2>Comprendemos Tus Necesidades</h2>
+                <p>Identificamos y atendemos las necesidades específicas de tu centro de estética</p>
+            </div>
+            <div class="needs-grid">
+                <div class="need-card">
+                    <i>🔒</i>
+                    <h3>Seguridad y Protección de tu negocio</h3>
+                    <p>Estabilidad sostenible económica del negocio con clientes recurrentes</p>
+                    <div class="vigor-meter">
+                        <div class="vigor-fill vigor-2"></div>
+                    </div>
+                    <small>Nivel de vigor: 2/5</small>
+                </div>
+                <div class="need-card">
+                    <i>⭐</i>
+                    <h3>Reconocimiento y Estatus de tu marca</h3>
+                    <p>Posicionamiento de marca considerada en tu mercado local</p>
+                    <div class="vigor-meter">
+                        <div class="vigor-fill vigor-4"></div>
+                    </div>
+                    <small>Nivel de vigor: 4/5</small>
+                </div>
+                <div class="need-card">
+                    <i>📈</i>
+                    <h3>Crecimiento Consistente sostenible</h3>
+                    <p>Clientela constante y predecible que permite planificar expansion</p>
+                    <div class="vigor-meter">
+                        <div class="vigor-fill vigor-4"></div>
+                    </div>
+                    <small>Nivel de vigor: 4/5</small>
+                </div>
+                <div class="need-card">
+                    <i>💰</i>
+                    <h3>Maximización Retornos de inversión</h3>
+                    <p>Resultados medibles y comprobables con datos reales</p>
+                    <div class="vigor-meter">
+                        <div class="vigor-fill vigor-4"></div>
+                    </div>
+                    <small>Nivel de vigor: 4/5</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats" id="resultados">
+        <div class="container">
+            <div class="section-title">
+                <h2>Resultados con casos Comprobables</h2>
+                <p>Datos reales que se quedan en la memoria semántica de nuestros clientes</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">7.3:1</div>
+                    <p>Reterno de inversión en publicidad promedio por cada $1 invertido</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">+410</div>
+                    <p>Clientes captados en 180 dias</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$6.8M → $49.9M</div>
+                    <p>Incremento en ventas reales</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4+</div>
+                    <p>Centros de estética transformados</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Historias que Despiertan Emoción</h2>
+                <p>Experiencias reales que crean memoria episódica y deseos de compartir</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        Cuando casi cierro mi centro de estética después de gastar $3M en publicidad sin resultados deseados, descubrí el Programa GestionBoost Marketing 3. No solo salvé mi negocio, sino que hoy tengo lista de espera de clientes.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img"></div>
+                        <div>
+                            <strong>María López</strong>
+                            <p>Belleza Facial Premium</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        Dupliqué mis ingresos en 90 días instalando este departamento de mercadeo a mi neogico. De preocuparme por pagar alquiler de espacios a escalar a mi local. La transformación fue increíble.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img"></div>
+                        <div>
+                            <strong>Carlos Rodríguez</strong>
+                            <p>Estética Facial Expert</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        Llené mi agenda por 3 meses consecutivos después de meses de altibajos. Ahora tengo la estabilidad que siempre he tenido en mente para mi negocio de estética.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img"></div>
+                        <div>
+                            <strong>Ana Martínez</strong>
+                            <p>Skin Care Premium</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process" id="proceso">
+        <div class="container">
+            <div class="section-title">
+                <h2>Proceso de Compra Simplificado</h2>
+                <p>Guiamos a los tomadores de decisión en cada etapa del proceso</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <h3>1. Reconocimiento del Problema</h3>
+                    <p>Identificamos juntos las oportunidades de crecimiento no aprovechadas en tu centro de estética.</p>
+                </div>
+                <div class="process-step">
+                    <h3>2. Descripción de Necesidades</h3>
+                    <p>Definimos claramente qué necesita tu negocio y cómo nuestro programa puede satisfacerlo.</p>
+                </div>
+                <div class="process-step">
+                    <h3>3. Especificación del Programa</h3>
+                    <p>Te presentamos nuestra ficha técnica con el análisis de valor detallado.</p>
+                </div>
+                <div class="process-step">
+                    <h3>4. Presentación de Propuesta</h3>
+                    <p>Recibes una propuesta personalizada que describe el valor y beneficios en términos claros.</p>
+                </div>
+                <div class="process-step">
+                    <h3>5. Negociación e Implementación</h3>
+                    <p>Acordamos los términos y plazos para implementar las estrategias en tu negocio.</p>
+                </div>
+                <div class="process-step">
+                    <h3>6. Revisión de Desempeño</h3>
+                    <p>Monitoreamos resultados en tiempo real con dashboard interactivo y evaluaciones periódicas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Preguntas Frecuentes</h2>
+                <p>Resolvemos las dudas clave de los tomadores de decisión</p>
+            </div>
+            <div class="accordion">
+                <div class="accordion-header">
+                    ¿Quién es el ideal para este programa? <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Dueños de centros de estética que buscan flujo de caja  y estabilidad económica, reconocimiento de marca y crecimiento medible. Personas que han invertido en publicidad sin ver resultados tangibles.</p>
+                </div>
+            </div>
+            <div class="accordion">
+                <div class="accordion-header">
+                    ¿Cómo se toma la decisión de compra? <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Generalmente el dueño o gerente general toma la decisión basándose en el Retorno de inversión potencial, la reputación del proveedor y los casos de éxito demostrables.</p>
+                </div>
+            </div>
+            <div class="accordion">
+                <div class="accordion-header">
+                    ¿Qué hace diferente a GestionBoost Marketing ADS 3? <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Nuestro enfoque TOP en resultados comprobables (Retorno de inversión de  7.3:1), el acompañamiento continuo y las garantías de los programas performance nos diferencian. No vendemos humo, vendemos resultados medibles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="contacto">
+        <div class="container">
+            <h2>¿Estas Listo para Transformar tu Centro de Estética?</h2>
+            <p>No arriesgues tu inversión sin una ruta estrategica clara. Únete a centros de estética que transformaron su negocio con resultados reales. Tu próxima historia de éxito comienza con una decisión hoy.</p>
+            <a href="#form" class="btn">Solicitar consultoria sobre el programa GBMA</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>GestionBoost Marketing ADS</h3>
+                    <p>Programa de marketing especializado para centros de estética que buscan incrementar su cartera de  clientes garantizados y Retornos de inversión comprobable.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>Email: info.innovarismkt.com</p>
+                    <p>Teléfono: +57 320-897-3501</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <p><a href="#necesidades" style="color: white;">Necesidades</a></p>
+                    <p><a href="#resultados" style="color: white;">Resultados</a></p>
+                    <p><a href="#testimonios" style="color: white;">Testimonios</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 IMSC® I GestionBoost Marketing ADS. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Funcionalidad para acordeón de FAQ
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                content.classList.toggle('active');
+                
+                const icon = header.querySelector('span');
+                icon.textContent = content.classList.contains('active') ? '-' : '+';
+            });
+        });
+
+        // Animación de aparición al hacer scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Aplicar animación a elementos
+        document.querySelectorAll('.need-card, .testimonial-card, .process-step, .stat-card').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s, transform 0.5s';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
